@@ -1,0 +1,18 @@
+
+
+
+
+
+
+
+
+
+/* button css from lesson 12 week 4 */
+button {
+    padding: 10px;
+    margin: 24px;
+    cursor: pointer;
+    font-size: 24px;
+    background-color: #247BA0;
+    color: white;
+  }

@@ -1,18 +1,39 @@
 
 
+header {
+  display: flex;
+  flex-direction: column;
+  text-align:center;
+  background-color:lightgrey;
+  width: 80%;
+  border-radius: 5px;
+}
 
+#time-time {
+  margin: 24px;
+  background-color:lightgray;
+}
 
-
-
-
-
-
-/* button css from lesson 12 week 4 */
+/* button css collaboration with Cheryl Loeffler */
 button {
-    padding: 10px;
-    margin: 24px;
-    cursor: pointer;
-    font-size: 24px;
-    background-color: #247BA0;
-    color: white;
-  }
+  padding: 10px;
+  margin: 24px;
+  align-self: center;
+  cursor: pointer;
+  font-size: 24px;
+  background-color: #094e6b;
+  color: white;
+  border-radius: 5px;
+  width: 150px;
+}
+  
+.containerQuizzBox {
+display:flex;
+flex-direction: column;
+margin: 40px 0px 24 px 0 px;
+align-self: center;
+background-color: lightgrey;
+width: 80%;
+border-radius: 5px;
+}
+

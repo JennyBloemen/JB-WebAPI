@@ -1,10 +1,13 @@
 var start = document.getElementById("start");
-var quiz = document.getElementById("questions");
-var choiceOne = documet.getElementById("one")
-var choiceTwo = documet.getElementById("two")
-var choiceThree = documet.getElementById("three")
-var choiceFour = documet.getElementById("four")
+var quiz = document.getElementById("quizz");
+var questionsEl = document.querySelector(".questions");
+var choiceOne = document.getElementById("one");
+var choiceTwo = document.getElementById("two");
+var choiceThree = document.getElementById("three");
+var choiceFour = document.getElementById("four");
 var scoreDiv = document.getElementById("scoreContainer");
+var highscoretext = document.getElementById("score");
+var leaderBoard = '';
 
 var myQuestions = [
   {
@@ -49,50 +52,40 @@ var myQuestions = [
   }
 ]
 
-var quizzboxEl = document.querySelectorAll("containerQuizzBox");
+var lastQindex= myQuestions.length - 1;
+var runningQindex = 0;
+// let count = 0;
 
-var choicesEL = document.querySelectorAll("answerChoices");
-
-var myQuestionIndex = 0;
-// /* /* need to tie in My questions array*/
-// function populateQuestion () {
-//   questionsEl = myQuestions[]
-//   quizzboxEl.appendChild(textContent);
-//   console.log(question);
-//   for (let i = 0; i < myQuestions.length; i++);
-// }
 function populateQuestion() {
-  var questionDisplay = question[myQuestionIndex];
-  var questionsEl = document.getElementById("questions");
-  questionsEl.textContent = questionDisplay.question;
+  var q = myQuestions[runningQindex];
+  questionsEl.innerHTML = "<h2>" + q.question + "</h2>";
+  questionsEl.innerHTML = q.question;
+  choiceOne.innerHTML = q.choiceOne;
+  choiceTwo.innerHTML = q.choiceTwo;
+  choiceThree.innerHTML = q.choiceThree;
+  choiceFour.innerHTML = q.choiceFour;
+  }
+
+function checkAnswer(answer) {
+  if (myQuestions[runningQindex].correct == answer)
+  } else {
+    timeLeft --;
+    timeLeft --;
+    timeLeft --;
+    timeLeft --;
+    timeLeft --;
+    console.log("Time is out");
 }
-  
-  
-  
-  questionsEl.textContect = currentQuestion.title;
-  
-  var titleEl = document.getElementById("question-title");
-  titleEl.textContent = currentQuestion.title;
-
-  // clear out any old question choices
-  choicesEl.innerHTML = "";
-
-
-
-
-
-function populateChoices () {
-  choicesEL.textContent = ("answerChoices");
-  quizzboxEl.appendChild(textContent);
-  console.log(choices);
-  
-// }
-
-
+  if (runningQindex< lastQindex) {
+    runningQindex++;
+    renderQ();
+} else{
+  endGame();
+}
 
 // Timer Code Block that starts when the start quizz button is selected
 var mainEl = document.getElementById("time-time");
-var timeEl = document.querySelector(".time");
+var timeEl = document.querySelector("time");
 var secondsLeft = 5;
 
 function setTime() {
@@ -110,45 +103,29 @@ function sendMessage() {
   timeEl.textContent = "Your time has burned out!🔥Try again!";
   mainEl.appendChild(textContent);
 }
-// calls the timer function, I think this needs to call the time when the start button is clicked
 
 var startBtn = document.querySelector("#start");
-startBtn.addEventListener("click",startTimer); 
-
-function startTimer() {
-  console.log("start");
-  setTime ();
-  // clearInterval ();
+startBtn.addEventListener("click", startQuiz);
+ 
+function startQuiz () {
+  populateQuestion();
+  setTime();
 }
 
+  startButton.addEventListener( "click", startQuiz);
+//can we have multiple event listeners for one element?
 
 
 
-// //example from class activity 7 not to be used, just for reference
-// var tagName = prompt("Please enter an HTML Tag (ex. h1, h2, p, div):", "enter tag");
-
-// if (tagName !== "h1" && tagName !== "h2" && tagName !== "p" && tagName !== "div") {
-//   alert("please enter a valid tag");
-// } else {
-//   // Creates element based on tag entered by user
-//   var tag = document.createElement(tagName);
-
-//   // Adds text content to created tag
-//   tag.textContent = "This was made via prompts. It's a " + tagName + ".";
-  
-//   // Appends tag as child of document body
-//   document.body.appendChild(tag);
-// }
-
-// my attempt to create the same, but I am not sure if I need to create a second element. TT ta for clarity.
-// if (answer = true) {
-//   answer.textContent = "Answer is correct!"
-//   //  use a for loop ++ to log correct answer? 
-// } else if (answer = false) {
-//   answer. textcontent = "Answer is incorrect!"
-// //  use a for loop ++ to log wrong answer?
-// document.body.appendChild(tag);
-// }
 
 
-// start button may need a event.preventDefault();
+
+
+
+
+
+
+
+
+
+

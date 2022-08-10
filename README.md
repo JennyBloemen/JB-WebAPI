@@ -19,6 +19,4 @@ add screen shot here
 put url here
 <br><br>
 <h3>Sources</h3>
-https://www.interviewbit.com/javascript-mcq/
-https://michael-karen.medium.com/how-to-save-high-scores-in-local-storage-7860baca9d68
-https://www.sitepoint.com/simple-javascript-quiz/
+https://www.codeexplained.dev/2018/10/create-multiple-choice-quiz-using-javascript.html

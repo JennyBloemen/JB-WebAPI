@@ -16,7 +16,7 @@ var myQuestions = [
     choiceTwo: "::", 
     choiceThree: "()",
     choiceFour: "[]",
-    answer: "three"
+    answer: "choiceThree"
   },
   {
     question: "Which one is a looping structure in JavaScript?",
@@ -35,12 +35,12 @@ var myQuestions = [
     answer: "two"
   },
   {
-    question: "Which of the following is a JavaScript Data Type?",
+    question: "Which of the following is not a JavaScript Data Type?",
     choiceOne: "Number", 
     choiceTwo: "String", 
     choiceThree: "Boolean", 
-    choiceFour: "Object",
-    answer: "All the above"
+    choiceFour: "class",
+    answer: "four"
   },
   {
     question: "What are the types of Pop up boxes available in JavaScript?",
@@ -48,13 +48,13 @@ var myQuestions = [
     choiceTwo: "Count", 
     choiceThree: "Confirm", 
     choiceFour: "Object",
-    answer: "Confirm"
+    answer: "three"
   }
 ]
 
 var lastQindex= myQuestions.length - 1;
 var runningQindex = 0;
-// let count = 0;
+var correct = 0;
 
 function populateQuestion() {
   var q = myQuestions[runningQindex];
@@ -68,25 +68,24 @@ function populateQuestion() {
 
 function checkAnswer(answer) {
   if (myQuestions[runningQindex].correct == answer){
+  correct++
   } else {
-    timeLeft --;
-    timeLeft --;
-    timeLeft --;
-    timeLeft --;
-    timeLeft --;
-    console.log("Time is out");
+    secondsLeft = secondsLeft-5;
+    console.log("lost time");
 }
   if (runningQindex< lastQindex) {
     runningQindex++;
-    renderQ();
-} else{
-  endGame();
+    populateQuestion();
+} 
+// else{
+//   endGame();
+// }
 }
-}
+
 // Timer Code Block that starts when the start quizz button is selected
 var mainEl = document.getElementById("time-time");
-var timeEl = document.querySelector("time");
-var secondsLeft = 5;
+var timeEl = document.querySelector(".time");
+var secondsLeft = 45;
 
 function setTime() {
   var timerInterval = setInterval(function() {
@@ -96,12 +95,12 @@ function setTime() {
     if(secondsLeft === 0) {
       clearInterval(timerInterval);
       sendMessage();
+      secondsLeft = 45;
     }
   }, 1000);
 }
 function sendMessage() {
   timeEl.textContent = "Your time has burned out!🔥Try again!";
-  mainEl.appendChild(textContent);
 }
 
 var startBtn = document.querySelector("#start");
@@ -112,9 +111,7 @@ function startQuiz () {
   setTime();
 }
 
-  startButton.addEventListener( "click", startQuiz);
-//can we have multiple event listeners for one element?
-
+// End Game
 
 
 

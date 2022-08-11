@@ -67,7 +67,7 @@ function populateQuestion() {
   }
 
 function checkAnswer(answer) {
-  if (myQuestions[runningQindex].correct == answer)
+  if (myQuestions[runningQindex].correct == answer){
   } else {
     timeLeft --;
     timeLeft --;
@@ -82,7 +82,7 @@ function checkAnswer(answer) {
 } else{
   endGame();
 }
-
+}
 // Timer Code Block that starts when the start quizz button is selected
 var mainEl = document.getElementById("time-time");
 var timeEl = document.querySelector("time");

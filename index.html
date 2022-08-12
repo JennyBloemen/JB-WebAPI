@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Timers and Intervals</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="Develop/style.css">
 </head>
 
@@ -19,33 +20,32 @@
 
 <!-- will need to add class="hide" to div id="questions" -->
 <body>
-  <section id="time-time">
-      <h2 class="time"></h2>
-  </section>
+  
 
-  <section class="containerQuizzBox">
+  <!-- <section class="containerQuizzBox">
     <div id="quizz">
       <h2 class="questions"></h2>
         <div class="answerChoices" id="one" onclick="checkAnswer('one')"></div>
         <div class="answerChoices" id="two" onclick="checkAnswer('two')"></div>
         <div class="answerChoices" id="three" onclick="checkAnswer('three')"></div>
         <div class="answerChoices" id="four" onclick="checkAnswer('four')"></div>
-    </section>
+    </section> -->
+
+    <div class="card" style="width: 18rem">
+      <div class="card-header"></div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" id="one" onclick="checkAnswer('one')"></li>
+        <li class="list-group-item" id= "two" onclick="checkAnswer('two')"></li>
+        <li class="list-group-item" id="three" onclick="checkAnswer('three')"></li>
+        <li class="list-group-item" id="four" onclick="checkAnswer('four')"></li>
+      </ul>
+    </div>
+
    
-  <div id="end-screen" class="hide">
-      <h3>All done!</h3>
-      <p>Your final score is <span id="final-score"></span>.</p>
-      <p>
-        Enter initials: <input type="text" id="initials" max="3" />
-      <button id="submit">Submit</button>
-      </p>
-  </div>
-     
-  <div id="scorebox">
-    <a href="#my-high-score" class="high-score"><h3>High Scores</h3></a>
-    <p>Your score: <span class="score"></span></p>
-  </div>
- 
+    <section id="time-time">
+      <h2 class="time"></h2>
+    </section> -->
+  
   
   <script src="Develop/script.js"></script>
 </body>

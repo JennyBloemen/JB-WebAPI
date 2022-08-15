@@ -11,11 +11,6 @@ var timerInterval;
 var finalScore = document.getElementById("final-score");
 
 
-// var scoreDiv = document.getElementById("scoreContainer");
-// var score = document.getElementById("score");
-// var highscore = document.getElementById("highScore");
-// var leaderBoard = '';
-// var highscoreSection = document.querySelector(".high-scores");
 // Quetions, Choices and Answer Array
 var myQuestions = [
   {
@@ -67,21 +62,23 @@ var correct = 0;
 function populateQuestion() {
   var q = myQuestions[runningQindex];
   questionsEl.innerHTML = "<div list-group>" + q.question + "</div>";
-  // questionsEl.innerHTML = q.question;
   choiceOne.innerHTML = q.choiceOne;
   choiceTwo.innerHTML = q.choiceTwo;
   choiceThree.innerHTML = q.choiceThree;
   choiceFour.innerHTML = q.choiceFour;
   }
   
-  function checkAnswer(answer) {
-    if (myQuestions[runningQindex].answer == answer){
+function checkAnswer(answer) {
+  if (myQuestions[runningQindex].answer == answer){
     correct++;
     console.log(correct);
     } else {
+      // ask in class hours how to get this working so it will stop going below 
+        if (secondsLeft > 0) {
         secondsLeft = secondsLeft-5;
         console.log("lost-time");
      }
+    }
     if (runningQindex < lastQindex) {
       runningQindex++;
       populateQuestion();
@@ -89,84 +86,76 @@ function populateQuestion() {
       (runningQindex > lastQindex)
       quizEnd ();
     }
-  }
-// function answerIsCorrect (){
+}
  
 var mainEl = document.getElementById("time-time");
 var timeEl = document.querySelector(".time");
-var secondsLeft = 35;
+var secondsLeft = 15;
 
+// if(timerInterval === 0 || runningQindex === myQuestions.length){
+//   clearInterval(timerInterval);
+// check if user ran out of time
 function setTime() {
   timerInterval = setInterval(() => {
     secondsLeft--;
     timeEl.textContent = 'Timer: ' + secondsLeft + ' seconds';
     
-    // if(secondsLeft === 0) {
-    //   clearInterval(timerInterval);
-    //   sendMessage();
-    // }
-    // if(timerInterval === 0 || runningQindex === myQuestions.length){
-    //   clearInterval(timerInterval);
-// check if user ran out of time
-  if (timerInterval <= 0) {
+    if(secondsLeft === 0 ) {
+      clearInterval(timerInterval);
+      timeoutMsg();
+    }
+    if (timerInterval <= 0) {
       clearInterval(timerInterval);
       quizEnd();
+    }
+  }, 1000);
 }
-}, 1000);
+function timeoutMsg() {
+  timeEl.textContent = "Your time has🔥out, try again.";
+  correct = 0;
 }
 function quizEnd(){
-  // TA had me try setting quiz to empty string, but it didn't work
-  // questionsEl.innerHTML = "";
-  // choiceOne.innerHTML = "";
-  // choiceTwo.innerHTML = "";
-  // choiceThree.innerHTML = "";
-  // choiceFour.innerHTML = "";
-  if (runningQindex >= lastQindex || secondsLeft === 0){
-    // quiz.style.display = "none";
-    // choiceOne.style.display = "none";
-    
-    // this will show the initials block when the quiz ends
-    intials.style.display = "block";
-}
+  // Set's quiz content to empty string to hide questions and answers.
+  questionsEl.innerHTML = "";
+  choiceOne.innerHTML = "";
+  choiceTwo.innerHTML = "";
+  choiceThree.innerHTML = "";
+  choiceFour.innerHTML = "";
 
-  var endMessage = document.createElement ("h1");
-  endMessage.textContent = "You are done!";
-  questionsEl.append(endMessage);
+  if (runningQindex >= lastQindex || secondsLeft === 0){
+    clearInterval(timerInterval);  
+    intials.style.display = "block";
+  }
+  // Tutoring helped to write this code and recomend I write the score code in a separate js file
+  var endMessage = document.createElement ("h3");
+    endMessage.textContent = "Quiz Complete!";
+    questionsEl.append(endMessage);
   
   var inputInitials = document.createElement ("input");
-  inputInitials.setAttribute ('placeholder, type your initials');
-  intials.append(inputInitials);
+    inputInitials.setAttribute ('placeholder, type your initials');
+    intials.append(inputInitials);
 
   var submitBtn = document.createElement("button");
-  submitBtn.textcontent="submit";
-  intials.append(submitBtn);
+    submitBtn.textcontent="submit";
+    intials.append(submitBtn);
 
   submitBtn.addEventListener("click",function(){
     var user = {
       name: inputInitials.value,
       finalScore: correct
-    }
-    var storage=JSON.parse(localstorage.getItem('highscore'))
-    if (storage === null){
-      storage = []
-      }
-      storage.push(user)
-      localStorage.setItem('highscore', JSON.stringify(storage))
-        window.location.href = 'highscore.html'
-    
-  })
-
- }
-// create a second javascript file to show highscores
-
-function sendMessage() {
-  timeEl.textContent = "Your time has burned out!🔥";
-  // show score and save to local storage
-  // hide quizz and show up a button to retake- Inside teh new buton fut=ntion do lines 117 and 118
-  secondsLeft = 15;
-  correct = 0;
 }
 
+var storage=JSON.parse(localstorage.getItem('highscore'))
+  if (storage === null){
+      storage = []
+    }
+    storage.push(user)
+    localStorage.setItem('highscore', JSON.stringify(storage))
+    window.location.href = 'highscore.html'
+  })
+ }
+
+// event listener to start quiq
 var startBtn = document.querySelector("#start");
 startBtn.addEventListener("click", startQuiz);
 
@@ -174,10 +163,4 @@ function startQuiz (){
   // quiz.style.display = "block";
   populateQuestion();
   setTime();
-  
-}
-
-
-// finalScore = correct;
-
-// submitBtn.addEventListener("click",intials)
+ }

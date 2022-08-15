@@ -5,7 +5,8 @@
   height: 80vh;
   align-content: center;
  }
-header {
+
+ header {
   display: flex;
   flex-direction: column;
   text-align:center;
@@ -15,58 +16,51 @@ header {
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 3px;
- 
  }
-.container {
+ 
+ p {
+  font-size: 20px;
+ }
+ 
+ h3 {
+  font-size: 24px;
+  text-align: center;
+ }
+
+ .container {
   /* display: flex;
   flex-direction: column; */
   text-align:center;
   background-color:lightgrey;
   border-radius: 5px
 }
- .card-header {
+ 
+.card-header {
   text-align: left;
   font-size: 24px;
   padding-top: 20px;
  }
-.list-group {
+
+ .list-group {
   list-style-type: none;
   font-size: 20px;
-  font: bold
+  font: bold;
+  /* align-content: center; */
  }
-#one{
+
+ #one, #two, #three, #four{
   padding:10px;
   width: 200px;
   border-style: solid;
   border-radius: 6px;
-  margin: 3px 
+  margin: 3px;
 }
-#two{
-  padding:10px;
-  width: 200px;
-  border-style: solid;
-  border-radius: 6px; 
-  margin: 3px
-}
-#three{
-  padding:10px;
-  width: 200px;
-  border-style: solid;
-  border-radius: 6px;
-  margin: 3px 
-}
-#four{
-  padding:10px;
-  width: 200px;
-  border-style: solid;
-  border-radius: 6px;
-  margin: 3px 
-}
+
 #time-time {
-  
   border-radius: 5px;
   border-color: black;
   align-items: center;
+  text-align: center;
 }
 /* button css collaboration with Cheryl Loeffler */
 button {

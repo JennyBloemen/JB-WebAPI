@@ -14,7 +14,7 @@ To take a timed quiz, the following requirements are met when:
 </ul>
 <h3>Screenshot of application</h3>
 
-![Screenshot (45)](https://user-images.githubusercontent.com/108432711/184723984-a5c066f2-3058-4086-9455-f9db9b0a3606.png)
+![image](https://user-images.githubusercontent.com/108432711/184735278-0a91de41-52dc-46e5-ab5e-7f01eedabaa2.png)
 ![Screenshot (46)](https://user-images.githubusercontent.com/108432711/184724122-3e1b379e-74cb-41c3-aec5-a2977a1f3106.png)
 <br><br>
 <h3>Link to the Final Page:</h3>

@@ -24,4 +24,5 @@ put url here
 <ul>
   <li> https://www.codeexplained.dev/2018/10/create-multiple-choice-quiz-using-javascript.html</li>
   <li> class hours and tutoring</li>
+  <li> class mates: Emmalee Anderson and Cheryl Loeffler</li>
  </ul>

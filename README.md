@@ -21,5 +21,7 @@ To take a timed quiz, the following requirements are met when:
 put url here
 <br><br>
 <h3>Sources</h3>
-https://www.codeexplained.dev/2018/10/create-multiple-choice-quiz-using-javascript.html
-class hours and tutoring
+<ul>
+  <li> https://www.codeexplained.dev/2018/10/create-multiple-choice-quiz-using-javascript.html</li>
+  <li> class hours and tutoring</li>
+ </ul>

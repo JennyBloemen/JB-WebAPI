@@ -18,7 +18,7 @@ To take a timed quiz, the following requirements are met when:
 ![Screenshot (46)](https://user-images.githubusercontent.com/108432711/184724122-3e1b379e-74cb-41c3-aec5-a2977a1f3106.png)
 <br><br>
 <h3>Link to the Final Page:</h3>
-put url here
+https://jennybloemen.github.io/JB-WebAPI/
 <br><br>
 <h3>Sources</h3>
 <ul>

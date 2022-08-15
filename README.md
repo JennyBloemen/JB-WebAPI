@@ -8,7 +8,7 @@ To take a timed quiz, the following requirements are met when:
 <ul>
 <li>The timer starts and the questions are presented after I click the start button.</li>
 <li>Answering the right question presents me with the next question.</li>
-<li><li>Answering the wrong question reduces time from the timer.</li>
+<li>Answering the wrong question reduces time from the timer.</li>
 <li>After all the questions are answered or the timer reaches 0, the game is over.</li>
 <li>I can save my score with my initials.</li>
 </ul>

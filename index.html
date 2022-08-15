@@ -22,7 +22,7 @@
   <div class="container"></div>
     <div class="card" >
       <div class="card-header"></div>
-      <ul class="list-group list-group-flush">
+      <ul class="list-group list-group-flush setattribute" style="display: none">
         <li class="list-group-item" id="one" onclick="checkAnswer('one')"></li>
         <li class="list-group-item" id= "two" onclick="checkAnswer('two')"></li>
         <li class="list-group-item" id="three" onclick="checkAnswer('three')"></li>
@@ -33,9 +33,7 @@
 
     <div class="end-screen" style="display: none">
       <p>Your final score: <span id="final-score"></span></p>
-      <p>Enter initials: <input type="text" id="initials" max="3" />
-        <button id="submit">Submit</button>
-      </p>
+      <p>Enter initials: <input type="text" id="initials" max="3" /><button id="submit">Submit</button></p>
     </div>
     
     <section id="time-time">

@@ -6,10 +6,10 @@ var choiceOne = document.getElementById("one");
 var choiceTwo = document.getElementById("two");
 var choiceThree = document.getElementById("three");
 var choiceFour = document.getElementById("four");
-var intials = document.querySelector(".end-screen");
+var endScreen = document.querySelector(".end-screen");
 var timerInterval;
 var finalScore = document.getElementById("final-score");
-
+var listgroup = document.querySelector(".list-group");
 
 // Quetions, Choices and Answer Array
 var myQuestions = [
@@ -82,6 +82,8 @@ function checkAnswer(answer) {
     if (runningQindex < lastQindex) {
       runningQindex++;
       populateQuestion();
+      // listgroup.style.display = "block";
+
     } else { 
       (runningQindex > lastQindex)
       quizEnd ();
@@ -124,7 +126,8 @@ function quizEnd(){
 
   if (runningQindex >= lastQindex || secondsLeft === 0){
     clearInterval(timerInterval);  
-    intials.style.display = "block";
+    endScreen.style.display = "block";
+    listgroup.style.display ="none";
   }
   // Tutoring helped to write this code and recomend I write the score code in a separate js file
   var endMessage = document.createElement ("h3");
@@ -133,11 +136,11 @@ function quizEnd(){
   
   var inputInitials = document.createElement ("input");
     inputInitials.setAttribute ('placeholder, type your initials');
-    intials.append(inputInitials);
+    endScreen.append(inputInitials);
 
   var submitBtn = document.createElement("button");
     submitBtn.textcontent="submit";
-    intials.append(submitBtn);
+    endScreen.append(submitBtn);
 
   submitBtn.addEventListener("click",function(){
     var user = {
@@ -163,4 +166,6 @@ function startQuiz (){
   // quiz.style.display = "block";
   populateQuestion();
   setTime();
+  listgroup.style.display ="block";
+
  }

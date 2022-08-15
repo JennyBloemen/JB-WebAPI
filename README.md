@@ -12,15 +12,10 @@ To take a timed quiz, the following requirements are met when:
 <li>After all the questions are answered or the timer reaches 0, the game is over.</li>
 <li>I can save my score with my initials.</li>
 </ul>
-<h3>Screenshot</h3>
-
-
-![Screenshot (44)](https://user-images.githubusercontent.com/108432711/184723981-e676ae43-78a6-44c6-b314-6a8d73a6f8f0.png)
+<h3>Screenshot of application</h3>
 
 ![Screenshot (45)](https://user-images.githubusercontent.com/108432711/184723984-a5c066f2-3058-4086-9455-f9db9b0a3606.png)
-
-![Screenshot (46)](https://user-images.githubusercontent.com/108432711/184723992-748153de-6df0-460f-8faf-5eba0cfc6f0e.png)
-
+![Screenshot (46)](https://user-images.githubusercontent.com/108432711/184724122-3e1b379e-74cb-41c3-aec5-a2977a1f3106.png)
 <br><br>
 <h3>Link to the Final Page:</h3>
 put url here

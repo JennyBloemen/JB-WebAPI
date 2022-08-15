@@ -92,7 +92,7 @@ function checkAnswer(answer) {
  
 var mainEl = document.getElementById("time-time");
 var timeEl = document.querySelector(".time");
-var secondsLeft = 15;
+var secondsLeft = 35;
 
 // if(timerInterval === 0 || runningQindex === myQuestions.length){
 //   clearInterval(timerInterval);

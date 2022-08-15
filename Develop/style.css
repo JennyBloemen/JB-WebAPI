@@ -36,7 +36,7 @@
 }
  
 .card-header {
-  text-align: left;
+  text-align:center;
   font-size: 24px;
   padding-top: 20px;
  }
@@ -45,7 +45,6 @@
   list-style-type: none;
   font-size: 20px;
   font: bold;
-  /* align-content: center; */
  }
 
  #one, #two, #three, #four{
@@ -54,6 +53,7 @@
   border-style: solid;
   border-radius: 6px;
   margin: 3px;
+  margin-left: 175px;
 }
 
 #time-time {

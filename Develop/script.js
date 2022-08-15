@@ -66,7 +66,7 @@ function populateQuestion() {
   choiceTwo.innerHTML = q.choiceTwo;
   choiceThree.innerHTML = q.choiceThree;
   choiceFour.innerHTML = q.choiceFour;
-  }
+}
   
 function checkAnswer(answer) {
   if (myQuestions[runningQindex].answer == answer){
@@ -87,7 +87,7 @@ function checkAnswer(answer) {
     } else { 
       (runningQindex > lastQindex)
       quizEnd ();
-    }
+    } 
 }
  
 var mainEl = document.getElementById("time-time");
@@ -158,7 +158,7 @@ var storage=JSON.parse(localstorage.getItem('highscore'))
   })
  }
 
-// event listener to start quiq
+// event listener to start quiz
 var startBtn = document.querySelector("#start");
 startBtn.addEventListener("click", startQuiz);
 
@@ -167,5 +167,4 @@ function startQuiz (){
   populateQuestion();
   setTime();
   listgroup.style.display ="block";
-
  }

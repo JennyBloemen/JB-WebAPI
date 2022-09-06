@@ -10,7 +10,8 @@ var endScreen = document.querySelector(".end-screen");
 var timerInterval;
 var finalScore = document.getElementById("final-score");
 var listgroup = document.querySelector(".list-group");
-
+var feedBack = document.getElementById("feedback");
+var initialsEl = document.getElementById('initials')
 // Quetions, Choices and Answer Array
 var myQuestions = [
   {
@@ -19,7 +20,7 @@ var myQuestions = [
     choiceTwo: "2. ::", 
     choiceThree: "3. ()",
     choiceFour: "4. []",
-    answer: "three"
+    answer: "three",
   },
   {
     question: "Which one is a looping structure in JavaScript?",
@@ -27,7 +28,7 @@ var myQuestions = [
     choiceTwo: "2. While",
     choiceThree: "3. do-while loops",
     choiceFour: "4. All the above",
-    answer: "four"
+    answer: "four",
   },
   {
     question: "What is the correct way to call the random method on the Math global object?",
@@ -35,7 +36,7 @@ var myQuestions = [
     choiceTwo: "2. Math.random()", 
     choiceThree: "3. random.Math()", 
     choiceFour: "4. Math(random)",
-    answer: "two"
+    answer: "two",
   },
   {
     question: "Which of the following is NOT a JavaScript Data Type?",
@@ -43,7 +44,7 @@ var myQuestions = [
     choiceTwo: "2. String", 
     choiceThree: "3. Boolean", 
     choiceFour: "4. Class",
-    answer: "four"
+    answer: "four",
   },
   {
     question: "What are the types of Pop up boxes available in JavaScript?",
@@ -51,7 +52,7 @@ var myQuestions = [
     choiceTwo: "2. Count", 
     choiceThree: "3. Confirm", 
     choiceFour: "4. Object",
-    answer: "three"
+    answer: "three",
   }
 ]
 
@@ -71,12 +72,20 @@ function populateQuestion() {
 function checkAnswer(answer) {
   if (myQuestions[runningQindex].answer == answer){
     correct++;
+    feedBack.textContent = "Correct!";
     console.log(correct);
+
     } else {
+        if (myQuestions[runningQindex].answer != answer) {
+          feedBack.textContent = "Wrong!";
+        }
       // ask in class hours how to get this working so it will stop going below 
         if (secondsLeft > 0) {
         secondsLeft = secondsLeft-5;
-        console.log("lost-time");
+        if (secondsLeft < 0){
+          secondsLeft = 0;
+        }
+        // console.log("lost-time");
      }
     }
     if (runningQindex < lastQindex) {
@@ -87,18 +96,20 @@ function checkAnswer(answer) {
     } else { 
       (runningQindex > lastQindex)
       quizEnd ();
-    } 
-}
- 
+    }
+  } 
+
+
 var mainEl = document.getElementById("time-time");
 var timeEl = document.querySelector(".time");
-var secondsLeft = 35;
+var secondsLeft = 25;
 
 // if(timerInterval === 0 || runningQindex === myQuestions.length){
 //   clearInterval(timerInterval);
 // check if user ran out of time
 function setTime() {
   timerInterval = setInterval(() => {
+    if (secondsLeft > 0) {
     secondsLeft--;
     timeEl.textContent = 'Timer: ' + secondsLeft + ' seconds';
     
@@ -110,6 +121,7 @@ function setTime() {
       clearInterval(timerInterval);
       quizEnd();
     }
+  }
   }, 1000);
 }
 function timeoutMsg() {
@@ -117,46 +129,73 @@ function timeoutMsg() {
   correct = 0;
 }
 function quizEnd(){
-  // Set's quiz content to empty string to hide questions and answers.
+   // Set's quiz content to empty string to hide questions and answers.
   questionsEl.innerHTML = "";
   choiceOne.innerHTML = "";
   choiceTwo.innerHTML = "";
   choiceThree.innerHTML = "";
   choiceFour.innerHTML = "";
+  feedBack.textContent = ""; 
 
   if (runningQindex >= lastQindex || secondsLeft === 0){
-    clearInterval(timerInterval);  
+    clearInterval(timerInterval);// this is not working  
     endScreen.style.display = "block";
     listgroup.style.display ="none";
   }
-  // Tutoring helped to write this code and recomend I write the score code in a separate js file
+// Tutoring helped to write this code and recomend I write the score code in a separate js file
   var endMessage = document.createElement ("h3");
     endMessage.textContent = "Quiz Complete!";
     questionsEl.append(endMessage);
-  
-  var inputInitials = document.createElement ("input");
-    inputInitials.setAttribute ('placeholder, type your initials');
-    endScreen.append(inputInitials);
+    // captures final score
+  var finalScoreEl = document.getElementById('final-score');
+  finalScoreEl.textContent = correct;
+} 
+
+function saveHighScore () {
+  var initials = initialsEl.value.trim();
+
+  if (initials !== "") {
+    var highScores = JSON.parse(window.localStorage.getItem('highscores')) || [];
+    var newScore = {
+        score: correct,
+        intitals: initials,
+    };  
+    highScores.push(newSore);
+    window.localStorage.setItem('highScores', JSON.stringify(highScores));
+    window.location.href = 'highScores.html';
+  }
+}
+ 
+
+function checkForEnter(event) {
+    if (event.key === 'Enter') {
+      saveHighScore();
+    }
+  }
+  // document.getElementById ("initials");
+  //   inputInitials.setAttribute ('placeholder, type your initials');
+  //   endScreen.append(inputInitials);
 
   var submitBtn = document.createElement("button");
-    submitBtn.textcontent="submit";
+    submitBtn.textcontent="Submit";
     endScreen.append(submitBtn);
 
-  submitBtn.addEventListener("click",function(){
-    var user = {
-      name: inputInitials.value,
-      finalScore: correct
-}
+  submitBtn.onclick = saveHighScore;
 
-var storage=JSON.parse(localstorage.getItem('highscore'))
-  if (storage === null){
-      storage = []
-    }
-    storage.push(user)
-    localStorage.setItem('highscore', JSON.stringify(storage))
-    window.location.href = 'highscore.html'
-  })
- }
+  // submitBtn.addEventListener("click",function(){
+  //   var user = {
+  //     name: inputInitials.value,
+  //  }
+
+// var storage=JSON.parse(localstorage.getItem('highscore'))
+//   if (storage === null){
+//       storage = []
+//     }
+//     storage.push(user)
+//     localStorage.setItem('highscore', JSON.stringify(storage))
+//     window.location.href = 'highscore.html'
+//   })
+//  }
 
 // event listener to start quiz
 var startBtn = document.querySelector("#start");

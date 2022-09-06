@@ -10,11 +10,12 @@
     <link rel="stylesheet" type="text/css" href="Develop/style.css">
 </head>
 
-<header> 
-  <h1>JavaScript Quiz</h1>
-  <p>Let's test your JavaScript knowledge! Answer the questions as quickly as you can and try to get the HIGH SCORE.  Each wrong answer will result in a 10 second score/time penalty. Don't worry, you can try as many times as you want!</p>
-  <button id="start">Start Quiz</button>
-    
+<header>
+  <div id ='head'> 
+    <h1>JavaScript Quiz</h1>
+    <p>Let's test your JavaScript knowledge! Answer the questions as quickly as you can and try to get the HIGH SCORE.  Each wrong answer will result in a 10 second score/time penalty. Don't worry, you can try as many times as you want!</p>
+    <button id="start">Start Quiz</button>
+</div>  
 </header>
 
 <!-- will need to add class="hide" to div id="questions" -->
@@ -29,10 +30,11 @@
         <li class="list-group-item" id="four" onclick="checkAnswer('four')"></li>
       </ul>
     </div>
+    <div id="feedback" class="feeback hide"></div>
   </div>
 
     <div class="end-screen" style="display: none">
-      <p>Score: <span id="final-score"></span></p>
+      <p>Your Score: <span id="final-score"></span></p>
       <p>Enter initials: <input type="text" id="initials" max="3" /><button id="submit">Submit</button></p>
     </div>
     

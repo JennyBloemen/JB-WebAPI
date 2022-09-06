@@ -55,7 +55,10 @@
   margin: 3px;
   margin-left: 175px;
 }
-
+#feedback {
+  font-size: 30px;
+  text-align: center;
+}
 #time-time {
   border-radius: 5px;
   border-color: black;

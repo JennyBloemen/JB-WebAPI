@@ -12,6 +12,7 @@ var finalScore = document.getElementById("final-score");
 var listgroup = document.querySelector(".list-group");
 var feedBack = document.getElementById("feedback");
 var initialsEl = document.getElementById('initials')
+
 // Quetions, Choices and Answer Array
 var myQuestions = [
   {
@@ -60,6 +61,7 @@ var lastQindex= myQuestions.length - 1;
 var runningQindex = 0;
 var correct = 0;
 
+// populates the quizz questions 
 function populateQuestion() {
   var q = myQuestions[runningQindex];
   questionsEl.innerHTML = "<div list-group>" + q.question + "</div>";
@@ -79,7 +81,6 @@ function checkAnswer(answer) {
         if (myQuestions[runningQindex].answer != answer) {
           feedBack.textContent = "Wrong!";
         }
-      // ask in class hours how to get this working so it will stop going below 
         if (secondsLeft > 0) {
         secondsLeft = secondsLeft-5;
         if (secondsLeft < 0){
@@ -91,22 +92,16 @@ function checkAnswer(answer) {
     if (runningQindex < lastQindex) {
       runningQindex++;
       populateQuestion();
-      // listgroup.style.display = "block";
-
     } else { 
       (runningQindex > lastQindex)
       quizEnd ();
     }
   } 
 
-
 var mainEl = document.getElementById("time-time");
 var timeEl = document.querySelector(".time");
 var secondsLeft = 25;
 
-// if(timerInterval === 0 || runningQindex === myQuestions.length){
-//   clearInterval(timerInterval);
-// check if user ran out of time
 function setTime() {
   timerInterval = setInterval(() => {
     if (secondsLeft > 0) {
@@ -129,7 +124,7 @@ function timeoutMsg() {
   correct = 0;
 }
 function quizEnd(){
-   // Set's quiz content to empty string to hide questions and answers.
+  // Set's quiz content to empty string to hide questions and answers.
   questionsEl.innerHTML = "";
   choiceOne.innerHTML = "";
   choiceTwo.innerHTML = "";
@@ -146,7 +141,8 @@ function quizEnd(){
   var endMessage = document.createElement ("h3");
     endMessage.textContent = "Quiz Complete!";
     questionsEl.append(endMessage);
-    // captures final score
+  
+  // captures final score
   var finalScoreEl = document.getElementById('final-score');
   finalScoreEl.textContent = correct;
 } 
@@ -160,50 +156,33 @@ function saveHighScore () {
         score: correct,
         intitals: initials,
     };  
-    highScores.push(newSore);
+    highScores.push(newScore);
     window.localStorage.setItem('highScores', JSON.stringify(highScores));
-    window.location.href = 'highScores.html';
+    window.location.href = 'highscores.html';
   }
 }
- 
 
+// checks if initials have been submitted
 function checkForEnter(event) {
     if (event.key === 'Enter') {
       saveHighScore();
     }
   }
-  // document.getElementById ("initials");
-  //   inputInitials.setAttribute ('placeholder, type your initials');
-  //   endScreen.append(inputInitials);
 
-  var submitBtn = document.createElement("button");
-    submitBtn.textcontent="Submit";
-    endScreen.append(submitBtn);
+// starts the quiz
+function startQuiz (){
+  populateQuestion();
+  setTime();
+  listgroup.style.display ="block";
+ }
 
-  submitBtn.onclick = saveHighScore;
-
-  // submitBtn.addEventListener("click",function(){
-  //   var user = {
-  //     name: inputInitials.value,
-  //  }
-
-// var storage=JSON.parse(localstorage.getItem('highscore'))
-//   if (storage === null){
-//       storage = []
-//     }
-//     storage.push(user)
-//     localStorage.setItem('highscore', JSON.stringify(storage))
-//     window.location.href = 'highscore.html'
-//   })
-//  }
+// event listenter to sumbit initials and save high score 
+var submitBtn = document.getElementById("submit");
+submitBtn.onclick = saveHighScore;
 
 // event listener to start quiz
 var startBtn = document.querySelector("#start");
 startBtn.addEventListener("click", startQuiz);
 
-function startQuiz (){
-  // quiz.style.display = "block";
-  populateQuestion();
-  setTime();
-  listgroup.style.display ="block";
- }
+// event listener to check if intials were entered based on keyup event
+initialsEl.onkeyup = checkForEnter;
